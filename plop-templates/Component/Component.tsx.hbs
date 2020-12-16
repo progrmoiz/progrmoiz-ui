@@ -1,0 +1,29 @@
+import React, { useContext } from "react";
+import classnames from 'classnames';
+import { ThemeContext } from '../context/ThemeContext';
+
+export interface Props {
+    children?: React.ReactNode;
+    className?: string,
+}
+
+type RefType = HTMLDivElement;
+
+const {{pascalCase name}} = React.forwardRef<RefType, Props>(({
+  className = '',
+  children,
+  ...otherProps
+}, ref) => {
+  const { theme: { {{camelCase name}} } } = useContext(ThemeContext)
+
+  const props = {
+      className: classnames(className),
+      ref,
+      ...otherProps
+  }
+
+
+  return <div {...(props as React.HTMLProps<HTMLDivElement>)}>{ children }</div>
+})
+
+export default {{pascalCase name}};
